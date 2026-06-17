@@ -18,14 +18,14 @@ app.use(express.json());
 // express.static() 中间件：提供静态文件服务
 // 访问 / 时会自动找 public/index.html
 // 访问 style.css、app.js 也能直接找到
-app.use(express.static(path.join(__dirname, 'public')));
+// 注意：先注册 API 路由，再服务静态文件，避免 "/" 路径被 static 拦截
 
-// =============================
-// 导入并挂载 API 路由
-// =============================
-// 所有 /api/ 开头的请求交给 api.js 处理
+// 先导入并挂载 API 路由
 const apiRouter = require('./api');
 app.use('/api', apiRouter);
+
+// 再服务静态文件
+app.use(express.static(path.join(__dirname, 'public')));
 
 // =============================
 // 启动服务器
