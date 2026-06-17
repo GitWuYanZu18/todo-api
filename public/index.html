@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>待办事项 v2.0</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <h1 class="app-title">📝 待办事项 v2.0</h1>
+
+        <!-- 输入区域 -->
+        <div class="input-area">
+            <input type="text" id="todoInput" placeholder="输入待办事项，按回车添加..." autofocus>
+            <button id="addBtn" class="add-btn">添加</button>
+        </div>
+
+        <!-- 筛选按钮 -->
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">全部</button>
+            <button class="filter-btn" data-filter="active">进行中</button>
+            <button class="filter-btn" data-filter="done">已完成</button>
+        </div>
+
+        <!-- 统计 -->
+        <div class="stats">
+            <span>共 <strong id="totalCount">0</strong> 项</span>
+            <span>进行中 <strong id="activeCount">0</strong> 项</span>
+            <span>已完成 <strong id="doneCount">0</strong> 项</span>
+        </div>
+
+        <!-- 待办列表 -->
+        <ul id="todoList" class="todo-list">
+            <!-- JavaScript 动态生成列表项 -->
+        </ul>
+
+        <!-- 空状态提示 -->
+        <p id="emptyMsg" class="empty-msg">还没有待办事项，添加一个吧！</p>
+
+        <!-- 操作按钮 -->
+        <div class="actions">
+            <button id="clearDoneBtn" class="action-btn">清除已完成</button>
+            <button id="clearAllBtn" class="action-btn danger">清除全部</button>
+        </div>
+
+        <!-- 快捷键提示 -->
+        <p class="shortcuts">
+            <strong>快捷键：</strong>
+            Enter = 添加 &nbsp;|&nbsp; 双击 = 编辑 &nbsp;|&nbsp; Esc = 取消编辑
+        </p>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

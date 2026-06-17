@@ -1,0 +1,229 @@
+/* ========== 全局 ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
+    background: linear-gradient(135deg, #10b981, #059669);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+}
+
+/* ========== 应用容器 ========== */
+.app {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    width: 100%;
+    max-width: 550px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.app-title {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* ========== 输入区域 ========== */
+.input-area {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.input-area input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: border-color 0.2s;
+}
+
+.input-area input:focus {
+    outline: none;
+    border-color: #10b981;
+}
+
+.add-btn {
+    padding: 12px 24px;
+    background: #10b981;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.add-btn:hover {
+    background: #059669;
+}
+
+/* ========== 筛选按钮 ========== */
+.filters {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.filter-btn {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #e0e0e0;
+    background: white;
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.filter-btn:hover {
+    background: #f5f5f5;
+}
+
+.filter-btn.active {
+    background: #10b981;
+    color: white;
+    border-color: #10b981;
+}
+
+/* ========== 统计 ========== */
+.stats {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #eee;
+    font-size: 13px;
+    color: #666;
+}
+
+.stats strong {
+    color: #10b981;
+}
+
+/* ========== 列表 ========== */
+.todo-list {
+    list-style: none;
+    margin-bottom: 16px;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    background: #f8f8ff;
+    border-radius: 10px;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.todo-item:hover {
+    background: #eeeef8;
+    transform: translateX(4px);
+}
+
+/* 复选框 */
+.todo-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #10b981;
+}
+
+/* 编辑模式：显示输入框代替文字 */
+.edit-input {
+    flex: 1;
+    padding: 4px 8px;
+    border: 1px solid #10b981;
+    border-radius: 6px;
+    font-size: 15px;
+    font-family: inherit;
+}
+
+/* 文字（未编辑时显示） */
+.todo-text {
+    flex: 1;
+    font-size: 15px;
+    color: #333;
+    cursor: text;
+    user-select: text;
+}
+
+/* 已完成：删除线和灰色 */
+.todo-item.done .todo-text {
+    text-decoration: line-through;
+    color: #aaa;
+}
+
+/* 删除按钮 */
+.delete-btn {
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.2s;
+    padding: 0 4px;
+}
+
+.delete-btn:hover {
+    color: #e11d48;
+}
+
+/* ========== 空状态 ========== */
+.empty-msg {
+    text-align: center;
+    color: #999;
+    font-size: 14px;
+    padding: 20px 0;
+    display: none;
+}
+
+/* ========== 操作按钮 ========== */
+.actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.action-btn {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    background: white;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.action-btn:hover {
+    background: #f5f5f5;
+}
+
+.action-btn.danger {
+    color: #e11d48;
+    border-color: #fde2e6;
+}
+
+.action-btn.danger:hover {
+    background: #fff0f2;
+}
+
+/* ========== 快捷键提示 ========== */
+.shortcuts {
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+    line-height: 1.8;
+}
