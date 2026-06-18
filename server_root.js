@@ -34,3 +34,6 @@ app.listen(PORT, function () {
     console.log('本地访问：http://localhost:' + PORT);
     console.log('========================================');
 });
+
+// 导出 app 供 Railway Railpack 使用
+module.exports = app;
