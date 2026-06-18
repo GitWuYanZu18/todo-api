@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "D8: 待办事项 API 服务",
   "scripts": {
-    "start": "node server/server.js"
+    "start": "node server_root.js"
   },
   "dependencies": {
     "better-sqlite3": "*",
