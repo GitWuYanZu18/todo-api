@@ -24,8 +24,8 @@ app.use(express.json());
 const apiRouter = require('./api');
 app.use('/api', apiRouter);
 
-// 再服务静态文件
-app.use(express.static(path.join(__dirname, 'public')));
+// 再服务静态文件（public 在 server/ 的上一级目录）
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // =============================
 // 启动服务器
