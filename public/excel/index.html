@@ -1,0 +1,100 @@
+<!-- 08-excel-tools - Excel 批量处理工具 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel 批量处理工具</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Excel 批量处理工具</h1>
+        <p class="subtitle">上传 Excel 文件，进行数据合并、筛选、排序、去重等操作</p>
+
+        <!-- 文件上传区域 -->
+        <div class="upload-section">
+            <input type="file" id="fileInput" accept=".xlsx,.xls,.csv">
+            <button id="btnRead">读取文件</button>
+        </div>
+
+        <!-- Sheet 标签页 -->
+        <div id="sheetTabs" class="sheet-tabs hidden"></div>
+
+        <!-- 数据表格 -->
+        <div id="dataArea" class="data-area hidden">
+            <div class="data-header">
+                <span id="sheetName">Sheet1</span>
+                <span id="rowCount">0 行</span>
+            </div>
+            <div class="table-wrapper">
+                <table id="dataTable">
+                    <thead></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 操作面板 -->
+        <div id="actionPanel" class="action-panel hidden">
+            <h3>🛠 数据处理</h3>
+
+            <!-- 筛选 -->
+            <div class="action-group">
+                <h4>筛选数据</h4>
+                <div class="row">
+                    <select id="filterColumn"></select>
+                    <select id="filterCondition">
+                        <option value="eq">等于</option>
+                        <option value="contains">包含</option>
+                        <option value="gt">大于</option>
+                        <option value="lt">小于</option>
+                    </select>
+                    <input type="text" id="filterValue" placeholder="输入值">
+                    <button id="btnFilter">筛选</button>
+                </div>
+            </div>
+
+            <!-- 排序 -->
+            <div class="action-group">
+                <h4>排序</h4>
+                <div class="row">
+                    <select id="sortColumn"></select>
+                    <select id="sortOrder">
+                        <option value="asc">升序</option>
+                        <option value="desc">降序</option>
+                    </select>
+                    <button id="btnSort">排序</button>
+                </div>
+            </div>
+
+            <!-- 去重 -->
+            <div class="action-group">
+                <h4>去重（按某列）</h4>
+                <div class="row">
+                    <select id="dedupColumn"></select>
+                    <button id="btnDedup">去重</button>
+                </div>
+            </div>
+
+            <!-- 导出 -->
+            <div class="action-group">
+                <h4>导出</h4>
+                <button id="btnExportXlsx">导出 Excel</button>
+                <button id="btnExportCsv">导出 CSV</button>
+            </div>
+        </div>
+
+        <!-- 合并工具 -->
+        <div class="action-group" id="mergeSection">
+            <h4>📦 合并多个 Sheet 到一个文件</h4>
+            <button id="btnMerge">合并当前所有 Sheet</button>
+        </div>
+
+        <!-- 加载提示 -->
+        <div id="loading" class="loading hidden">处理中...</div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

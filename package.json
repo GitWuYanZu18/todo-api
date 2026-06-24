@@ -1,12 +1,20 @@
 {
   "name": "todo-api",
-  "version": "1.0.0",
-  "description": "D8: 待办事项 API 服务",
+  "version": "2.0.0",
+  "description": "工具箱：待办事项 + Excel处理 + 图片处理 + 网页爬虫 + OCR识别",
+  "main": "index.js",
   "scripts": {
-    "start": "node server_root.js"
+    "start": "node index.js"
   },
   "dependencies": {
-    "better-sqlite3": "*",
-    "express": "*"
+    "cheerio": "^1.0.0-rc.12",
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
+    "pdf-parse": "^1.1.4",
+    "sharp": "^0.33.5",
+    "sql.js": "^1.10.3",
+    "undici": "^6.27.0",
+    "uuid": "^9.0.1",
+    "xlsx": "^0.18.5"
   }
 }

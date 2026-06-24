@@ -1,0 +1,72 @@
+<!-- 10-scraper - 网页数据采集工具 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网页数据采集工具</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🕷 网页数据采集工具</h1>
+        <p class="subtitle">输入网址和 CSS 选择器，抓取页面内容导出为 Excel/CSV</p>
+
+        <div class="func-tabs">
+            <div class="func-tab active" data-func="simple">简单抓取</div>
+            <div class="func-tab" data-func="list">列表抓取</div>
+        </div>
+
+        <div class="input-section">
+            <label>目标网址：</label>
+            <input type="url" id="url" placeholder="https://example.com" value="https://example.com">
+        </div>
+
+        <!-- 简单抓取 -->
+        <div class="panel" id="panel-simple">
+            <h3>选择要抓取的内容</h3>
+            <div id="selectors">
+                <div class="selector-row">
+                    <input type="text" class="sel-input" placeholder="CSS 选择器，如 h1" value="h1">
+                    <button class="btn-remove-sel">✕</button>
+                </div>
+            </div>
+            <button id="btnAddSel">+ 添加选择器</button>
+            <button id="btnFetch" class="btn-fetch">开始抓取</button>
+        </div>
+
+        <!-- 列表抓取 -->
+        <div class="panel hidden" id="panel-list">
+            <h3>列表抓取</h3>
+            <div class="input-section">
+                <label>列表项选择器：</label>
+                <input type="text" id="itemSel" placeholder="如 .product-item">
+            </div>
+            <h4>字段定义</h4>
+            <div id="fields">
+                <div class="field-row">
+                    <input type="text" class="fname" placeholder="字段名" value="标题">
+                    <input type="text" class="fselector" placeholder="选择器" value=".title">
+                    <button class="btn-remove-field">✕</button>
+                </div>
+            </div>
+            <button id="btnAddField">+ 添加字段</button>
+            <button id="btnFetchList" class="btn-fetch">开始抓取</button>
+        </div>
+
+        <div id="resultArea" class="result-area hidden">
+            <div class="result-header">
+                <h3>✅ 抓取结果</h3>
+                <div class="result-actions">
+                    <button id="btnExportExcel">导出 Excel</button>
+                    <button id="btnExportCsv">导出 CSV</button>
+                </div>
+            </div>
+            <div id="resultContent"></div>
+        </div>
+
+        <div id="loading" class="loading hidden">正在抓取页面...</div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

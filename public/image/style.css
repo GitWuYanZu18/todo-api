@@ -1,0 +1,62 @@
+/* 基础 */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: -apple-system, "Microsoft YaHei", sans-serif;
+    background: #f5f7fa; color: #333; padding: 20px;
+}
+.container { max-width: 1000px; margin: 0 auto; }
+h1 { text-align: center; margin-bottom: 8px; }
+.subtitle { text-align: center; color: #888; margin-bottom: 20px; font-size: 14px; }
+
+/* 功能标签 */
+.func-tabs { display: flex; gap: 4px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
+.func-tab {
+    background: #ddd; padding: 8px 18px; border-radius: 20px; cursor: pointer; font-size: 14px;
+}
+.func-tab.active { background: #4a90d9; color: #fff; }
+
+/* 上传 */
+.upload-section { background: #fff; padding: 20px; border-radius: 8px; text-align: center; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+
+/* 预览 */
+.preview-area { background: #fff; border-radius: 8px; padding: 16px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+.preview-title { margin-bottom: 10px; font-weight: bold; }
+.preview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
+.preview-item {
+    width: 100%; aspect-ratio: 1; border-radius: 4px; object-fit: cover;
+    border: 1px solid #ddd; cursor: pointer;
+}
+
+/* 面板 */
+.panel { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+.panel h3 { margin-bottom: 12px; }
+.panel .row { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; flex-wrap: wrap; }
+input[type="number"], input[type="text"], select {
+    padding: 6px 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px;
+}
+input[type="range"] { width: 150px; }
+
+/* 按钮 */
+button {
+    background: #4a90d9; color: #fff; border: none; padding: 8px 20px;
+    border-radius: 4px; cursor: pointer; font-size: 14px;
+}
+button:hover { background: #3a7bc8; }
+
+/* 结果 */
+.result-area { background: #d4edda; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+.result-list { margin-top: 10px; }
+.result-item { display: flex; gap: 10px; align-items: center; margin-bottom: 6px; }
+.result-item img { width: 60px; height: 60px; object-fit: cover; border-radius: 4px; }
+.result-item a { color: #4a90d9; text-decoration: none; }
+.result-item span { flex: 1; font-size: 13px; color: #555; }
+
+/* 加载 */
+.loading { text-align: center; padding: 20px; color: #4a90d9; font-size: 16px; }
+.hidden { display: none !important; }
+
+/* 响应式 */
+@media (max-width: 600px) {
+    .row { flex-direction: column; align-items: flex-start; }
+    .row input, .row select, .row button { width: 100%; }
+}

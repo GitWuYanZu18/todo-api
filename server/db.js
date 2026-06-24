@@ -1,25 +1,71 @@
-// db.js - SQLite 数据库初始化
-// 这个文件负责：1) 创建数据库文件 2) 创建数据表
-// 数据库文件会保存在 server 目录下，名为 todos.db
-
-const Database = require('better-sqlite3');
+// server/db.js - SQLite 数据库（使用 sql.js，纯 JS 无需编译）
+const initSqlJs = require('sql.js');
 const path = require('path');
+const fs = require('fs');
 
-// 创建或打开数据库文件（会自动创建 todos.db 文件）
-const db = new Database(path.join(__dirname, 'todos.db'));
+// 数据库文件放在 server/ 同级目录下（和根目录一致）
+const DB_FILE = path.join(__dirname, '..', 'todos.db');
+let db = null;
 
-// 创建数据表（如果不存在）
-// id = 自动增长的编号（主键）
-// text = 待办文字
-// done = 是否完成（0=未完成，1=已完成）
-// 注意：SQLite 没有原生 boolean 类型，用 0/1 代替
-db.exec(`
-    CREATE TABLE IF NOT EXISTS todos (
-        id INTEGER PRIMARY KEY,
-        text TEXT NOT NULL,
-        done INTEGER DEFAULT 0
-    )
-`);
+// 初始化数据库，创建 todos 表
+async function init() {
+    const SQL = await initSqlJs();
+    let rawData = null;
+    if (fs.existsSync(DB_FILE)) {
+        rawData = fs.readFileSync(DB_FILE);
+    }
+    db = new SQL.Database(rawData);
+    db.run(`
+        CREATE TABLE IF NOT EXISTS todos (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            text TEXT NOT NULL,
+            done INTEGER DEFAULT 0
+        )
+    `);
+    save();
+}
 
-// 导出 db 对象，其他文件可以 require 它来使用数据库
-module.exports = db;
+// 将数据库内容保存到文件
+function save() {
+    if (!db) return;
+    const data = db.export();
+    fs.writeFileSync(DB_FILE, Buffer.from(data));
+}
+
+// 执行 SELECT，返回对象数组
+function query(sql, params) {
+    const result = db.exec(sql, params);
+    if (!result || result.length === 0) return [];
+    const columns = result[0].columns;
+    return result[0].values.map(function (vals) {
+        const obj = {};
+        columns.forEach(function (col, i) { obj[col] = vals[i]; });
+        return obj;
+    });
+}
+
+// SELECT * FROM ...
+function all(sql, params) {
+    return query(sql, params);
+}
+
+// SELECT 第一条
+function get(sql, params) {
+    const rows = query(sql, params);
+    return rows.length > 0 ? rows[0] : undefined;
+}
+
+// INSERT / UPDATE / DELETE
+function run(sql, params) {
+    db.run(sql, params || []);
+    save();
+    const result = db.exec('SELECT last_insert_rowid()');
+    return { lastInsertRowid: result[0].values[0][0] };
+}
+
+module.exports = {
+    init: init,
+    all: all,
+    get: get,
+    run: run
+};

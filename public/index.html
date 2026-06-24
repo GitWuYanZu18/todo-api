@@ -3,54 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>待办事项 v2.0</title>
-    <link rel="stylesheet" href="style.css">
+    <title>工具箱 - 首页</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, "Microsoft YaHei", sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 40px 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        h1 { text-align: center; color: #fff; margin-bottom: 8px; font-size: 32px; }
+        .subtitle { text-align: center; color: rgba(255,255,255,0.8); margin-bottom: 36px; font-size: 15px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+        .card { background: #fff; border-radius: 12px; padding: 24px; text-decoration: none; color: #333; box-shadow: 0 4px 15px rgba(0,0,0,0.15); transition: transform 0.2s, box-shadow 0.2s; display: block; }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+        .card-icon { font-size: 36px; margin-bottom: 12px; }
+        .card h2 { font-size: 18px; margin-bottom: 8px; color: #333; }
+        .card p { font-size: 14px; color: #888; line-height: 1.5; }
+        .card-tag { display: inline-block; background: #f0f4f8; color: #4a90d9; font-size: 12px; padding: 2px 8px; border-radius: 10px; margin-top: 10px; }
+    </style>
 </head>
 <body>
-    <div class="app">
-        <h1 class="app-title">📝 待办事项 v2.0</h1>
-
-        <!-- 输入区域 -->
-        <div class="input-area">
-            <input type="text" id="todoInput" placeholder="输入待办事项，按回车添加..." autofocus>
-            <button id="addBtn" class="add-btn">添加</button>
+    <div class="container">
+        <h1>🧰 我的工具箱</h1>
+        <p class="subtitle">5 个实用工具，一键启动</p>
+        <div class="grid">
+            <a href="/todo" class="card">
+                <div class="card-icon">📋</div>
+                <h2>待办事项</h2>
+                <p>管理你的日常任务，标记完成、编辑文字、批量清除</p>
+                <span class="card-tag">全栈应用</span>
+            </a>
+            <a href="/tools/excel" class="card">
+                <div class="card-icon">📊</div>
+                <h2>Excel 批量处理</h2>
+                <p>读取、合并、筛选、排序、去重 Excel 数据，导出为 CSV</p>
+                <span class="card-tag">数据处理</span>
+            </a>
+            <a href="/tools/image" class="card">
+                <div class="card-icon">🖼️</div>
+                <h2>图片批量处理</h2>
+                <p>图片压缩、缩放、加水印、格式转换，支持批量操作</p>
+                <span class="card-tag">图片处理</span>
+            </a>
+            <a href="/tools/scraper" class="card">
+                <div class="card-icon">🕷</div>
+                <h2>网页数据采集</h2>
+                <p>输入网址和选择器，抓取页面内容，导出为 Excel/CSV</p>
+                <span class="card-tag">数据采集</span>
+            </a>
+            <a href="/tools/ocr" class="card">
+                <div class="card-icon">🔍</div>
+                <h2>OCR 文字识别</h2>
+                <p>图片文字识别、PDF 文字提取、二维码/条形码识别</p>
+                <span class="card-tag">智能识别</span>
+            </a>
         </div>
-
-        <!-- 筛选按钮 -->
-        <div class="filters">
-            <button class="filter-btn active" data-filter="all">全部</button>
-            <button class="filter-btn" data-filter="active">进行中</button>
-            <button class="filter-btn" data-filter="done">已完成</button>
-        </div>
-
-        <!-- 统计 -->
-        <div class="stats">
-            <span>共 <strong id="totalCount">0</strong> 项</span>
-            <span>进行中 <strong id="activeCount">0</strong> 项</span>
-            <span>已完成 <strong id="doneCount">0</strong> 项</span>
-        </div>
-
-        <!-- 待办列表 -->
-        <ul id="todoList" class="todo-list">
-            <!-- JavaScript 动态生成列表项 -->
-        </ul>
-
-        <!-- 空状态提示 -->
-        <p id="emptyMsg" class="empty-msg">还没有待办事项，添加一个吧！</p>
-
-        <!-- 操作按钮 -->
-        <div class="actions">
-            <button id="clearDoneBtn" class="action-btn">清除已完成</button>
-            <button id="clearAllBtn" class="action-btn danger">清除全部</button>
-        </div>
-
-        <!-- 快捷键提示 -->
-        <p class="shortcuts">
-            <strong>快捷键：</strong>
-            Enter = 添加 &nbsp;|&nbsp; 双击 = 编辑 &nbsp;|&nbsp; Esc = 取消编辑
-        </p>
     </div>
-
-    <script src="app.js"></script>
 </body>
 </html>

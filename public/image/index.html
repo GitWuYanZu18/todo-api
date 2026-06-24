@@ -1,0 +1,132 @@
+<!-- 09-image-tools - 图片批量处理工具 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片批量处理工具</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🖼 图片批量处理工具</h1>
+        <p class="subtitle">压缩、缩放、水印、格式转换 — 全部在浏览器中完成</p>
+
+        <!-- 功能标签页 -->
+        <div class="func-tabs">
+            <div class="func-tab active" data-func="compress">压缩</div>
+            <div class="func-tab" data-func="resize">缩放</div>
+            <div class="func-tab" data-func="watermark">水印</div>
+            <div class="func-tab" data-func="convert">格式转换</div>
+            <div class="func-tab" data-func="batch">批量处理</div>
+        </div>
+
+        <!-- 上传区 -->
+        <div class="upload-section">
+            <input type="file" id="fileInput" accept="image/*" multiple>
+        </div>
+
+        <!-- 图片预览 -->
+        <div id="previewArea" class="preview-area hidden">
+            <div class="preview-title">已选图片：<span id="fileCount">0</span> 张</div>
+            <div id="previewGrid" class="preview-grid"></div>
+        </div>
+
+        <!-- 功能面板 -->
+        <div id="funcPanels">
+            <!-- 压缩 -->
+            <div class="panel" id="panel-compress">
+                <h3>图片压缩</h3>
+                <div class="row">
+                    <label>质量：<span id="qualityVal">80</span>%</label>
+                    <input type="range" id="quality" min="10" max="100" value="80">
+                </div>
+                <div class="row">
+                    <label>输出格式：</label>
+                    <select id="compressFormat">
+                        <option value="jpeg">JPEG</option>
+                        <option value="png">PNG</option>
+                        <option value="webp">WebP</option>
+                    </select>
+                </div>
+                <button id="btnCompress">开始压缩</button>
+            </div>
+
+            <!-- 缩放 -->
+            <div class="panel hidden" id="panel-resize">
+                <h3>缩放</h3>
+                <div class="row">
+                    <label>宽度 (px)：</label>
+                    <input type="number" id="resizeWidth" placeholder="留空=按比例">
+                    <label>高度 (px)：</label>
+                    <input type="number" id="resizeHeight" placeholder="留空=按比例">
+                </div>
+                <div class="row">
+                    <label>输出格式：</label>
+                    <select id="resizeFormat">
+                        <option value="jpeg">JPEG</option>
+                        <option value="png">PNG</option>
+                        <option value="webp">WebP</option>
+                    </select>
+                </div>
+                <button id="btnResize">开始缩放</button>
+            </div>
+
+            <!-- 水印 -->
+            <div class="panel hidden" id="panel-watermark">
+                <h3>文字水印</h3>
+                <div class="row">
+                    <label>水印文字：</label>
+                    <input type="text" id="watermarkText" value="我的水印" placeholder="输入水印文字">
+                </div>
+                <div class="row">
+                    <label>字体大小：<span id="wmSizeVal">40</span>px</label>
+                    <input type="range" id="wmSize" min="10" max="120" value="40">
+                    <label>透明度：<span id="wmOpacityVal">0.3</span></label>
+                    <input type="range" id="wmOpacity" min="1" max="10" value="3">
+                </div>
+                <button id="btnWatermark">添加水印</button>
+            </div>
+
+            <!-- 格式转换 -->
+            <div class="panel hidden" id="panel-convert">
+                <h3>格式转换</h3>
+                <div class="row">
+                    <label>转换为：</label>
+                    <select id="convertTo">
+                        <option value="jpeg">JPEG</option>
+                        <option value="png">PNG</option>
+                        <option value="webp">WebP</option>
+                    </select>
+                </div>
+                <button id="btnConvert">开始转换</button>
+            </div>
+
+            <!-- 批量 -->
+            <div class="panel hidden" id="panel-batch">
+                <h3>批量处理（通过服务器处理）</h3>
+                <div class="row">
+                    <label>操作：</label>
+                    <select id="batchOp">
+                        <option value="compress">批量压缩</option>
+                        <option value="resize">批量缩放</option>
+                        <option value="convert">批量转换</option>
+                    </select>
+                </div>
+                <button id="btnBatch">批量处理并下载</button>
+            </div>
+        </div>
+
+        <!-- 结果区 -->
+        <div id="resultArea" class="result-area hidden">
+            <h3>✅ 处理完成</h3>
+            <div id="resultList" class="result-list"></div>
+        </div>
+
+        <!-- 加载 -->
+        <div id="loading" class="loading hidden">处理中...</div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

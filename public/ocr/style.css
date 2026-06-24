@@ -1,0 +1,28 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, "Microsoft YaHei", sans-serif; background: #f5f7fa; color: #333; padding: 20px; }
+.container { max-width: 800px; margin: 0 auto; }
+h1 { text-align: center; margin-bottom: 8px; }
+.subtitle { text-align: center; color: #888; margin-bottom: 20px; font-size: 14px; }
+.func-tabs { display: flex; gap: 4px; justify-content: center; margin-bottom: 16px; }
+.func-tab { background: #ddd; padding: 8px 18px; border-radius: 20px; cursor: pointer; font-size: 14px; }
+.func-tab.active { background: #4a90d9; color: #fff; }
+.upload-area { border: 2px dashed #ccc; border-radius: 8px; padding: 30px; text-align: center; cursor: pointer; transition: border-color 0.3s; margin-bottom: 12px; position: relative; }
+.upload-area:hover { border-color: #4a90d9; }
+.upload-area p { color: #888; font-size: 14px; pointer-events: none; }
+.upload-area input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.panel { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+.panel h3 { margin-bottom: 12px; }
+.img-preview { max-width: 100%; max-height: 300px; border-radius: 6px; margin: 10px 0; display: block; }
+.options { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; font-size: 14px; }
+.options select { padding: 6px 10px; border: 1px solid #ddd; border-radius: 4px; }
+.btn-recognize { background: #27ae60; color: #fff; border: none; padding: 10px 24px; border-radius: 4px; cursor: pointer; font-size: 15px; width: 100%; }
+.btn-recognize:hover { background: #219a52; }
+.btn-recognize:disabled { background: #aaa; cursor: not-allowed; }
+.result-area { background: #fff; border-radius: 8px; padding: 20px; margin-top: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+.result-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.btn-copy { background: #4a90d9; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-size: 13px; color: #fff; }
+#resultText { width: 100%; height: 200px; border: 1px solid #ddd; border-radius: 4px; padding: 10px; font-size: 14px; font-family: monospace; resize: vertical; }
+.loading { text-align: center; padding: 30px; color: #4a90d9; font-size: 16px; }
+.hidden { display: none !important; }
+.progress-bar { width: 100%; height: 6px; background: #eee; border-radius: 3px; margin: 10px 0; overflow: hidden; }
+.progress-fill { height: 100%; background: #27ae60; border-radius: 3px; transition: width 0.3s; width: 0; }
