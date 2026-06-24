@@ -1,0 +1,6 @@
+{
+  "build": {
+    "builder": "RAILPACK",
+    "startCommand": "node index.js"
+  }
+}
