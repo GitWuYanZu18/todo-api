@@ -11,8 +11,8 @@ app.use(express.json());
 // =============================
 // 共享目录
 // =============================
-const UPLOAD_DIR = path.join(__dirname, '..', 'uploads');
-const EXPORT_DIR = path.join(__dirname, '..', 'exports');
+const UPLOAD_DIR = path.join(__dirname, 'uploads');
+const EXPORT_DIR = path.join(__dirname, 'exports');
 [UPLOAD_DIR, EXPORT_DIR].forEach(function (dir) {
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 });
@@ -100,26 +100,26 @@ app.use('/api/ocr', require('./server/ocr/router')(upload));
 // 前端路由
 // =============================
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 app.get('/todo', function (req, res) {
-    res.sendFile(path.join(__dirname, '..', 'public', 'todo', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'todo', 'index.html'));
 });
 app.get('/tools/excel', function (req, res) {
-    res.sendFile(path.join(__dirname, '..', 'public', 'excel', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'excel', 'index.html'));
 });
 app.get('/tools/image', function (req, res) {
-    res.sendFile(path.join(__dirname, '..', 'public', 'image', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'image', 'index.html'));
 });
 app.get('/tools/scraper', function (req, res) {
-    res.sendFile(path.join(__dirname, '..', 'public', 'scraper', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'scraper', 'index.html'));
 });
 app.get('/tools/ocr', function (req, res) {
-    res.sendFile(path.join(__dirname, '..', 'public', 'ocr', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'ocr', 'index.html'));
 });
 
 // 静态资源
-app.use(express.static(path.join(__dirname, '..', 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // =============================
 // 启动
